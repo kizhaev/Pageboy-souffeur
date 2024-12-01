@@ -9,7 +9,7 @@
 import Foundation
 
 /// Internal protocol for handling auto scroller events.
-internal protocol PageboyAutoScrollerHandler: class {
+internal protocol PageboyAutoScrollerHandler: AnyObject {
     
     /// Auto scroller requires a scroll.
     ///

@@ -93,7 +93,7 @@ extension PageViewController {
         let iGreen = Float(greenA + percent * (greenB - greenA))
         let iAlpha = Float(alphaA + percent * (alphaB - alphaA))
         
-        return UIColor(colorLiteralRed: iRed, green: iGreen, blue: iBlue, alpha: iAlpha)
+        return UIColor(_colorLiteralRed: iRed, green: iGreen, blue: iBlue, alpha: iAlpha)
     }
 }
 

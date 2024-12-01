@@ -15,8 +15,8 @@ class TransparentNavigationBar: UINavigationBar {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white,
-                                    NSFontAttributeName : UIFont.systemFont(ofSize: 18.0, weight: UIFontWeightRegular)]
+        self.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,
+                                    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.regular)]
         self.tintColor = UIColor.white.withAlphaComponent(0.7)
         
         self.setBackgroundImage(UIImage(), for: .default)

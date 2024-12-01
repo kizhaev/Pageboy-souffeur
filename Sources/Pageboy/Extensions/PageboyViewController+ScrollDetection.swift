@@ -22,7 +22,7 @@ extension PageboyViewController: UIPageViewControllerDelegate, UIScrollViewDeleg
                                      willTransitionTo pendingViewControllers: [UIViewController],
                                      animated: Bool) {
         guard let viewController = pendingViewControllers.first,
-            let index = self.viewControllers?.index(of: viewController) else {
+              let index = self.viewControllers?.firstIndex(of: viewController) else {
                 return
         }
         
@@ -40,7 +40,7 @@ extension PageboyViewController: UIPageViewControllerDelegate, UIScrollViewDeleg
         guard completed == true else { return }
         
         if let viewController = pageViewController.viewControllers?.first,
-            let index = self.viewControllers?.index(of: viewController) {
+           let index = self.viewControllers?.firstIndex(of: viewController) {
             guard index == self.expectedTransitionIndex else { return }
             
             self.updateCurrentPageIndexIfNeeded(index)
@@ -301,7 +301,7 @@ extension PageboyViewController: UIPageViewControllerDelegate, UIScrollViewDeleg
 // MARK: - NavigationDirection detection
 internal extension PageboyViewController.NavigationDirection {
     
-    var pageViewControllerNavDirection: UIPageViewControllerNavigationDirection {
+    var pageViewControllerNavDirection: UIPageViewController.NavigationDirection {
         get {
             switch self {
                 

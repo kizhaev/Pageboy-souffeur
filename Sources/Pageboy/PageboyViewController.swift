@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol PageboyViewControllerDataSource: class {
+public protocol PageboyViewControllerDataSource: AnyObject {
     
     
     /// The view controllers to display in the Pageboy view controller.
@@ -24,7 +24,7 @@ public protocol PageboyViewControllerDataSource: class {
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex?
 }
 
-public protocol PageboyViewControllerDelegate: class {
+public protocol PageboyViewControllerDelegate: AnyObject {
  
     /// The page view controller will begin scrolling to a new page.
     ///
@@ -126,7 +126,7 @@ open class PageboyViewController: UIViewController {
     //
     
     /// The orientation that the page view controller transitions on.
-    public var navigationOrientation : UIPageViewControllerNavigationOrientation = .horizontal {
+    public var navigationOrientation : UIPageViewController.NavigationOrientation = .horizontal {
         didSet {
             guard self.pageViewController != nil else {
                 return

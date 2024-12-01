@@ -19,7 +19,7 @@ internal extension PageboyViewController {
     internal func setUpPageViewController(reloadViewControllers: Bool = true) {
         if self.pageViewController != nil { // destroy existing page VC
             self.pageViewController?.view.removeFromSuperview()
-            self.pageViewController?.removeFromParentViewController()
+            self.pageViewController?.removeFromParent()
             self.pageViewController = nil
         }
         
@@ -30,11 +30,11 @@ internal extension PageboyViewController {
         pageViewController.dataSource = self
         self.pageViewController = pageViewController
         
-        self.addChildViewController(pageViewController)
+        self.addChild(pageViewController)
         self.view.addSubview(pageViewController.view)
         pageViewController.view.pageboyPinToSuperviewEdges()
-        self.view.sendSubview(toBack: pageViewController.view)
-        pageViewController.didMove(toParentViewController: self)
+        self.view.sendSubviewToBack(pageViewController.view)
+        pageViewController.didMove(toParent: self)
         
         pageViewController.scrollView?.delegate = self
         
@@ -124,7 +124,7 @@ extension PageboyViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        if let index = viewControllers.index(of: viewController) {
+        if let index = viewControllers.firstIndex(of: viewController) {
             if index != 0 {
                 return viewControllers[index - 1]
             } else if self.isInfiniteScrollEnabled {
@@ -140,7 +140,7 @@ extension PageboyViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        if let index = viewControllers.index(of: viewController) {
+        if let index = viewControllers.firstIndex(of: viewController) {
             if index != viewControllers.count - 1 {
                 return viewControllers[index + 1]
             } else if self.isInfiniteScrollEnabled {
